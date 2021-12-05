@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Detalle del Proyecto ${proyecto.idProyecto}</h1>
-<h3>${empleado}</h3>
+<h3>${empleado.nombre}</h3>
 <table border="2">
 <tr>
 <th>Nombre Cliente</th>
@@ -23,15 +23,20 @@
 <c:forEach var="emp" items="${ListaEmple}">
 <tr>
 <td>${emp.empleado.nombre}<td>
-<tr>
+</tr>
 
 </c:forEach>
 </table>
 </td>
-<td>${proyecto.proyectoConProducto}
 
-
-
+<td>
+<table>
+<c:forEach var="proc" items="${ListaProducto }">
+<tr>
+<td>${proc.producto.descripcionBreve}</td>
+</tr>
+</c:forEach>
+</table>
 </tr>
 </table>
 

@@ -12,6 +12,8 @@ public interface IntProyectoDao {
 	
 	List<Proyecto> proyectoActivos();
 	
+	List<Proyecto> proyectoJefeAct(int idEmpl);
+	
 	
 	int terminarProyecto(Proyecto proyecto, BigDecimal costeReal,Date fechaFinReal);
 

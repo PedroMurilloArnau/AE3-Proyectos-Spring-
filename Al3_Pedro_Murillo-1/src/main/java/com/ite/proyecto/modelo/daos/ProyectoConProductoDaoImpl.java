@@ -5,8 +5,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
+import com.ite.proyectos.beans.ProyectoConEmpleado;
 import com.ite.proyectos.beans.ProyectoConProducto;
 
+@Repository
 public class ProyectoConProductoDaoImpl implements IntProyectoConProducto, Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -46,8 +50,14 @@ public class ProyectoConProductoDaoImpl implements IntProyectoConProducto, Seria
 
 	@Override
 	public ProyectoConProducto findBynumeroOrden(int numeroOrden) {
-		// TODO Auto-generated method stub
-		return null;
+		ProyectoConProducto aux = new ProyectoConProducto();
+		aux.setNumeroOrden(numeroOrden);
+		int pos = lista.indexOf(aux);
+		if (pos == -1)
+			return null;
+		else
+		return lista.get(pos);
+		
 	}
 	
 }

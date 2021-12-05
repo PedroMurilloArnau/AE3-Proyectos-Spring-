@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Asignar Empleados al proyecto: ${proyecto.idProyecto}</h1>
-<h3>${empleado}</h3>
+<h3>${empleado.nombre}</h3>
 <p>Selecciona los diferentes empleados que quieres asignar a este proyecto</p>
 <form action="/jefe/AsignarEmpleados/${proyecto.idProyecto}" method="post">
 <c:forEach var="empl" items="${listaEmpleados }">

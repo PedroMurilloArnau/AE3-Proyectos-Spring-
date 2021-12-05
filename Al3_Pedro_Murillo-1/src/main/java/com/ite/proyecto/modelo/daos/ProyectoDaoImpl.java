@@ -18,12 +18,10 @@ public class ProyectoDaoImpl implements IntProyectoDao,Serializable{
 	
 	
 	private List<Proyecto> lista;
-	private List<Proyecto> listAct;
 	private IntClienteDao clien = new ClienteDaoImpl();
 	private IntEmpleadosDao jefe = new EmpleadosDaolmpl();
 	
 	public ProyectoDaoImpl() {
-		listAct = new ArrayList<Proyecto>();
 		lista = new ArrayList<Proyecto>();
 		cargarDatos();
 	}
@@ -74,13 +72,32 @@ public class ProyectoDaoImpl implements IntProyectoDao,Serializable{
 
 	@Override
 	public List<Proyecto> proyectoActivos() {
+		List<Proyecto> aux = new ArrayList<Proyecto>();
 		for (Proyecto usu: lista) {
 			if (usu.getEstado() =="Activo"){
 				Proyecto carf = usu;
-				listAct.add(carf);
+				aux.add(carf);
 				}
 		}
-		return listAct;
+		return aux;
+	}
+	
+	/*Sacamos una lista de Proyectos donde le pasamos el id del empleado
+	 * y mediante condicionales podemos obtener los proyectos especificos
+	 * con esas dos condiciones.
+	 */
+	@Override
+	public List<Proyecto> proyectoJefeAct(int idEmpl) {
+		List<Proyecto> aux = new ArrayList<Proyecto>();
+		for (Proyecto usu: lista) {
+			if (usu.getJefeProyecto().getIdEmpl() == idEmpl) {
+				if (usu.getEstado() == "Activo") {
+			
+				aux.add(usu);
+				}
+			}
+		}
+		return aux;
 	}
 }
 

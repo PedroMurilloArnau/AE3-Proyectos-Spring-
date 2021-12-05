@@ -5,8 +5,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.ite.proyectos.beans.Producto;
 
+@Repository
 public class ProductoDaoImpl implements IntProducto, Serializable{
 	
 	private static final long serialVersionUID = 1L;

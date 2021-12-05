@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Página de Jefes de Proyectos</h1>
-<h3>${empleado}</h3>
+<h3>${empleado.nombre}</h3>
 <h4>${mensaje}</h4>
 <div id="cof">
 <table border="1">
@@ -27,6 +27,7 @@
 <td>${cle.cliente.nombre }</td>
 <td><a href="/jefe/verDetalle/${cle.idProyecto }">Ver Detalle</a></td>
 <td><a href="/jefe/AsignarEmpleados/${cle.idProyecto }">Asignar Empleados</a></td>
+<td><a href="/jefe/AsignarProductos/${cle.idProyecto }">Asignar Producto</a></td>
 </tr>
 </form>
 

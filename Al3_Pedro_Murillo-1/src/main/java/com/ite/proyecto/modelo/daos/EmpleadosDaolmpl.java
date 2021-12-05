@@ -89,8 +89,16 @@ public class EmpleadosDaolmpl implements IntEmpleadosDao, Serializable{
 	}
 
 	@Override
-	public Empleado findByPerfile(int perfile) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Empleado> findByPerfile(int idPerfil) {
+		List<Empleado> aux = new ArrayList<Empleado>();
+		for (Empleado usu: lista) {
+			if(usu.getPerfile().getIdPerfil()== idPerfil) {
+				aux.add(usu);
+			}
+		
+		}
+		return aux;
 	}
 }
+
+

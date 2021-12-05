@@ -2,6 +2,7 @@ package com.ite.proyectos.beans;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -157,8 +158,14 @@ public class Proyecto implements Serializable {
 	}
 
 	public ProyectoConEmpleado addProyectoConEmpleado(ProyectoConEmpleado proyectoConEmpleado) {
+		if(getProyectoConEmpleados() == null) {
+		List<ProyectoConEmpleado> aux = new ArrayList<ProyectoConEmpleado>();
+		aux.add(proyectoConEmpleado);
+		setProyectoConEmpleados(aux);
+		}
+		else {
 		getProyectoConEmpleados().add(proyectoConEmpleado);
-		proyectoConEmpleado.setProyecto(this);
+		}
 
 		return proyectoConEmpleado;
 	}
@@ -186,15 +193,25 @@ public class Proyecto implements Serializable {
 		this.jefeProyecto = jefeProyecto;
 	}
 	
+	public void setProyectoConProducto(List<ProyectoConProducto> proyectoConProducto) {
+		this.proyectoConProducto = proyectoConProducto;
+	}
+	
 
 	public List<ProyectoConProducto> getProyectoConProducto() {
 		return proyectoConProducto;
 	}
 	
 	public ProyectoConProducto addProyectoConProducto(ProyectoConProducto proyectoConProducto) {
+		if(getProyectoConProducto() == null) {
+		List<ProyectoConProducto> aux = new ArrayList<ProyectoConProducto>();
+		aux.add(proyectoConProducto);
+		setProyectoConProducto(aux);
+		}
+		else {
 		getProyectoConProducto().add(proyectoConProducto);
-		proyectoConProducto.setProyecto(this);
-		
+		}
+
 		return proyectoConProducto;
 	}
 	

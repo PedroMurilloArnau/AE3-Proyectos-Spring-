@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.ite.proyectos.beans.Empleado;
 import com.ite.proyectos.beans.ProyectoConEmpleado;
 @Repository
 public class ProyectoConEmpleadoDaoImpl implements IntProyectoConEmpleado, Serializable{
@@ -39,15 +40,21 @@ public class ProyectoConEmpleadoDaoImpl implements IntProyectoConEmpleado, Seria
 	public int addProyectoConEmpleado(ProyectoConEmpleado proyectoConEmpleado) {
 		if (!lista.contains(proyectoConEmpleado)) {
 			proyectoConEmpleado.setNumeroOrden(++contador);
+			lista.add(proyectoConEmpleado);
 		return 1;
 		}
 		return 0;
 	}
 
 	@Override
-	public ProyectoConEmpleado findByIdEmpl(int IdEmpl) {
-		// TODO Auto-generated method stub
-		return null;
+	public ProyectoConEmpleado findBynumeroOrden(int numeroOrden) {
+		ProyectoConEmpleado aux = new ProyectoConEmpleado();
+		aux.setNumeroOrden(numeroOrden);
+		int pos = lista.indexOf(aux);
+		if (pos == -1)
+			return null;
+		else
+		return lista.get(pos);
 	}
 
 }

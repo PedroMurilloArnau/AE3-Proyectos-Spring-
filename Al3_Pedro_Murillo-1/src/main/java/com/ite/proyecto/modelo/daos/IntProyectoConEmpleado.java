@@ -10,7 +10,7 @@ public interface IntProyectoConEmpleado {
 	
 	int addProyectoConEmpleado(ProyectoConEmpleado proyectoConEmpleado);
 	
-	ProyectoConEmpleado findByIdEmpl(int IdEmpl);
+	ProyectoConEmpleado findBynumeroOrden(int numeroOrden);
 	
 
 }

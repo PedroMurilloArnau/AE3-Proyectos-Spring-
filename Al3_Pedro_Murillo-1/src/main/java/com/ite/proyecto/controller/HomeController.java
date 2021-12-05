@@ -26,7 +26,15 @@ public class HomeController {
 @Autowired
 private IntEmpleadosDao emp ;
 
-	
+
+	/**El login será la página principal que nos desplegara un formulario
+	 * para que los diferentes empleados se puedan logear.
+	 * 
+	 * @param atts
+	 * @param model
+	 * @param sesion
+	 * @return login.jsp
+	 */
 	@GetMapping("/login")
 	public String login (RedirectAttributes atts,Model model, HttpSession sesion) {
 		if (sesion.getAttribute("usario") != null) {
@@ -37,7 +45,17 @@ private IntEmpleadosDao emp ;
 		return "login";
 	
 	}
-
+	
+	/**Mediante este método nos recogera el formulário del login, donde, dependiendo
+	 * del usuario que se logee nos redigirá a los diferentes index que se requieran.
+	 * 
+	 * @param atts
+	 * @param idEmpl
+	 * @param correo
+	 * @param pasword
+	 * @param sesion
+	 * @return /login o /jefe/proyectos o /gestion
+	 */
 	
 	@PostMapping("/login")
 	public String logearse (RedirectAttributes atts, @RequestParam("IdEmpl") int idEmpl,@RequestParam("correo") String correo, @RequestParam("pasword") String pasword, HttpSession sesion) {
@@ -53,21 +71,26 @@ private IntEmpleadosDao emp ;
 		}
 		
 		if(emple.getPerfile().getIdPerfil() ==1) {
-		sesion.setAttribute("empleado", emple.getNombre());
+		sesion.setAttribute("empleado", emple);
 		return "redirect:/gestion";}
 		if(emple.getPerfile().getIdPerfil() ==2) {
+		sesion.setAttribute("empleado", emple);
 		return "redirect:/jefe/proyectos";
 		}
 		return "redirec:/login";
 	}
-
-	@GetMapping("/jefes")
-	public String jefazos(Model model, HttpSession sesion) {
-		return "jefesIndex";
-	}
+	/**Mediante este método nos borrara de la sesion el usuario y nos llevará
+	 * de nuevo a la pagina principal.
+	 * 
+	 * @param sesion
+	 * @param atts
+	 * @return /login
+	 */
 	@GetMapping("/logout")
 	public String salirAlLogin( HttpSession sesion,RedirectAttributes atts) {
 		sesion.removeAttribute("empleado");
+		//mata la sesion de forma definitiva.
+		sesion.invalidate();
 		atts.addAttribute("mensajelogin", "Realizado LogOut");
 		return "redirect:/login";
 	}

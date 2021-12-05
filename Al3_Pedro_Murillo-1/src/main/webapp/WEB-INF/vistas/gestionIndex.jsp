@@ -21,7 +21,7 @@ background-color: #90EE90;
 </head>
 <body>
 <h1>Página de gestores</h1>
-<h3>${empleado}</h3>
+<h3>${empleado.nombre}</h3>
 <h2>${mensajeAlta}</h2>
 <div id="conter1">
 <h2>Apartado Crear un Proyecto</h2>
@@ -66,8 +66,8 @@ background-color: #90EE90;
 </c:forEach>
 </select>
 </td>
-<td><input type="number" name="costeReal" placeholder="Precio Real"></td>
-<td><input type="date" name="fechaFinReal"><td>
+<td><input type="number" name="costeReal" placeholder="Precio Real" required="required"></td>
+<td><input type="date" name="fechaFinReal" required="required"><td>
 <td><input type="submit" value="Finalizar Proyecto"></td>
 </tr>
 
@@ -80,16 +80,14 @@ background-color: #90EE90;
 <form action="/gestion/altaProducto" method="post">
 <table border="2">
 <tr>
-<th>Id Producto</th>
 <th>Precio Unitario</th>
 <th>Stock</th>
 <th>Descripcion Breve</th>
 <th>Descripcion Larga</th>
 </tr>
 <tr>
-<td><input type="number" name="idProducto" placeholder="Id Producto"></td>
-<td><input type="number" name="precioUnitario" placeholder="Precio Unitario"></td>
-<td><input type="number" name="Stock" placeholder="Stock"></td>
+<td><input type="number" name="precioUnitario" placeholder="Precio Unitario" ></td>
+<td><input type="number" name="stock" placeholder="Stock"></td>
 <td><input type="text" name="descripcionBreve" placeholder="Descripcion Breve"></td>
 <td><input type="text" name="descripcionLarga" placeholder="Descripcion Larga"></td>
 </tr>
